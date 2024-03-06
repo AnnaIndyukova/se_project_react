@@ -1,0 +1,8 @@
+@import url(../../vendor/fonts.css);
+@import url(../../vendor/normalize.css);
+
+.page__wrapper {
+  padding: 32px 40px 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+}

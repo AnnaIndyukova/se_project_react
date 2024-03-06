@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 40px;
+  font-family: "CabinetGrotesk-Bold";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 40px;
+}
+
+.header__button {
+  font-family: "CabinetGrotesk-Bold";
+  font-weight: 700;
+  font-size: 20px;
+  border-width: 0;
+  background-color: #fff;
+}
+
+.header__avatar {
+  display: flex;
+  align-items: center;
+}
+
+.header__name {
+  margin-left: 20px;
+}
+
+.header__avatar-img {
+  margin-left: 12px;
+}

@@ -1,0 +1,37 @@
+.modal__content-item {
+  background-color: #fff;
+  max-width: 498px;
+  height: 610px;
+  width: 100%;
+  border-radius: 20px;
+  position: relative;
+  padding: 0;
+}
+
+.modal__item-image {
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.modal__item-info {
+  padding: 20px 32px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "CabinetGrotesk-Bold";
+  line-height: 24px;
+}
+
+.modal__weather-type {
+  margin-top: 12px;
+}
+
+.modal__close-button-item {
+  border-style: none;
+  background: url("../../images/closeButtonWhite.svg");
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}

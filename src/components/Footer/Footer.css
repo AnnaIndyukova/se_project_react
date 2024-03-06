@@ -1,0 +1,9 @@
+.footer {
+  font-family: "CabinetGrotesk-Medium";
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 75px;
+}
