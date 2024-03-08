@@ -28,12 +28,16 @@ function App() {
   };
 
   useEffect(() => {
-    getForecastWeather().then((data) => {
-      const parsedWeatherData = parseWeatherData(data);
-      setTemp(parsedWeatherData.temperature);
-      setType(parsedWeatherData.type);
-      setCity(parsedWeatherData.city);
-    });
+    getForecastWeather()
+      .then((data) => {
+        const parsedWeatherData = parseWeatherData(data);
+        setTemp(parsedWeatherData.temperature);
+        setType(parsedWeatherData.type);
+        setCity(parsedWeatherData.city);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (

@@ -15,10 +15,10 @@ const ItemModal = ({ selectedCard, onClose }) => {
           alt={selectedCard.name}
         />
         <div className="modal__item-info">
-          <div>{selectedCard.name}</div>
-          <div className="modal__weather-type">
+          <p>{selectedCard.name}</p>
+          <p className="modal__weather-type">
             Weather type: {selectedCard.weather}
-          </div>
+          </p>
         </div>
       </div>
     </div>
