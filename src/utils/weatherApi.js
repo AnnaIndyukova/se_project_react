@@ -15,15 +15,23 @@ export const getForecastWeather = () => {
 
 export const parseWeatherData = (data) => {
   const main = data.main;
-  const temperature = main && Math.ceil(main.temp);
+  const temperatureF = main && Math.round(main.temp);
+
+  const weather = {
+    temperature: {
+      F: temperatureF,
+      C: Math.round(((temperatureF - 32) * 5) / 9),
+    },
+  };
+
   const city = data.name;
   let type = "";
-  if (temperature >= 86) {
+  if (temperatureF >= 86) {
     type = "hot";
-  } else if (temperature >= 66 && temperature <= 85) {
+  } else if (temperatureF >= 66 && temperatureF <= 85) {
     type = "warm";
-  } else if (temperature <= 65) {
+  } else if (temperatureF <= 65) {
     type = "cold";
   }
-  return { temperature, city, type };
+  return { weather, city, type };
 };

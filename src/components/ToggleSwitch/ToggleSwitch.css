@@ -1,0 +1,61 @@
+.toggleSwitch-checkbox {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.toggleSwitch-label {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 56px;
+  height: 28px;
+  border-radius: 56px;
+  border: solid 2px #7e7e7e;
+  position: relative;
+  /*transition: background-color 0.2s;*/
+}
+
+.toggleSwitch-label-F {
+  margin-left: 10px;
+  font-family: "CabinetGrotesk-Bold";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  z-index: 1;
+}
+
+.toggleSwitch-label-C {
+  margin-right: 8px;
+  font-family: "CabinetGrotesk-Bold";
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  z-index: 1;
+}
+
+.toggleSwitch-label .toggleSwitch-button {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 28px;
+  transition: 0.2s;
+  background: #000;
+  /* box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);*/
+}
+
+.toggleSwitch-checkbox:checked + .toggleSwitch-label .toggleSwitch-button {
+  left: 50%;
+  /*transform: translateX(-100%);*/
+}
+
+.toggleSwitch-label:hover .toggleSwitch-button {
+  width: 32px;
+}
+
+.toggleSwitch-label:hover {
+  border: solid 2px rgb(0, 0, 0);
+}
