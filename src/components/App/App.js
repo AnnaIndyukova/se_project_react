@@ -19,6 +19,7 @@ function App() {
   const [city, setCity] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -27,6 +28,19 @@ function App() {
   const handleCloseModal = () => {
     setActiveModal("");
   };
+
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+    document.addEventListener("keydown", handleEscClose);
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
 
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
@@ -41,13 +55,15 @@ function App() {
 
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
     const item = { name, imageUrl, weather };
+    setIsLoading(true);
     addItem(item)
       .then((item) => {
         setClothingItems([item, ...clothingItems]);
         handleCloseModal();
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(console.error)
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -60,9 +76,7 @@ function App() {
         setClothingItems(newItemList);
         handleCloseModal();
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch(console.error);
   };
 
   useEffect(() => {
@@ -73,16 +87,12 @@ function App() {
         setType(parsedWeatherData.type);
         setCity(parsedWeatherData.city);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch(console.error);
     getItemsList()
       .then((res) => {
         setClothingItems(res);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch(console.error);
   }, []);
 
   return (
@@ -119,6 +129,7 @@ function App() {
               onAddItem={handleAddItemSubmit}
               onCloseModal={handleCloseModal}
               isOpen={activeModal === "create"}
+              buttonText={isLoading ? "Saving..." : "Add garment"}
             />
           )}
           {activeModal === "preview" && (
