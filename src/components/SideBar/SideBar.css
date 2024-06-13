@@ -1,18 +1,38 @@
 .sideBar {
   display: flex;
   align-items: start;
-}
-
-.sideBar__name {
-  margin-left: 16px;
+  flex-direction: column;
   font-family: "CabinetGrotesk-Bold";
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+}
+
+.sideBar__avatar-name {
+  display: flex;
+  flex-direction: row;
+}
+
+.sideBar__name {
+  margin-left: 16px;
+  margin-top: 16px;
   min-width: 345px;
 }
 
 .sideBar__avatar-img {
   width: 56px;
   height: 56px;
+}
+
+.sidebar__button {
+  border-width: 0;
+  background-color: #fff;
+}
+
+.sidebar__button-change {
+  margin-top: 24px;
+}
+
+.sidebar__button-logout {
+  margin-top: 8px;
 }

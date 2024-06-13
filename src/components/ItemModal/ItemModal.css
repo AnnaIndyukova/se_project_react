@@ -30,10 +30,18 @@
   justify-content: space-between;
 }
 
-.modal__delete-item-button {
+.modal__item_delete-button {
   border-width: 0;
   background-color: #fff;
   color: #ff4d00;
+}
+
+.modal__item_delete-button_visible {
+  visibility: visible;
+}
+
+.modal__item_delete-button_hidden {
+  visibility: hidden;
 }
 
 .modal__weather-type {
