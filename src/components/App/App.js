@@ -13,7 +13,7 @@ import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import { useState, useEffect } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import api from "../../utils/api";
 import auth from "../../utils/auth";
 
@@ -106,8 +106,7 @@ function App() {
     auth
       .register(userData)
       .then((res) => {
-        setIsLoggedIn(true);
-        setCurrentUser(res.data);
+        handleLoginSubmit({ email, password });
         handleCloseModal();
       })
       .catch(console.error)
@@ -119,7 +118,6 @@ function App() {
   const handleLoginSubmit = ({ email, password }) => {
     const userData = { email, password };
     setIsLoading(true);
-    console.log(userData);
     auth
       .login(userData)
       .then((res) => {

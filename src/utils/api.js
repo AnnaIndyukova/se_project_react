@@ -1,5 +1,4 @@
 const baseUrl = "http://localhost:3001";
-const jwt = localStorage.getItem("jwt");
 
 const handleResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
@@ -13,12 +12,12 @@ const getItemsList = () => {
   return request(`${baseUrl}/items`, {
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${jwt}`,
     },
   });
 };
 
 const addItem = ({ name, weather, imageUrl }) => {
+  const jwt = localStorage.getItem("jwt");
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -30,6 +29,7 @@ const addItem = ({ name, weather, imageUrl }) => {
 };
 
 const deleteItem = (_id) => {
+  const jwt = localStorage.getItem("jwt");
   return request(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
     headers: {
@@ -40,6 +40,7 @@ const deleteItem = (_id) => {
 };
 
 const addCardLike = (id) => {
+  const jwt = localStorage.getItem("jwt");
   return request(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
@@ -50,6 +51,7 @@ const addCardLike = (id) => {
 };
 
 const removeCardLike = (id) => {
+  const jwt = localStorage.getItem("jwt");
   return request(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
