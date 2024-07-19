@@ -1,50 +1,53 @@
 import api from "./api";
-const baseUrl = "http://localhost:3001";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr.newhopes.info"
+    : "http://localhost:3001";
 
 // Sign Up
 const register = ({ name, avatar, email, password }) => {
-  return fetch(`${baseUrl}/signup`, {
+  return api.request(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
-  }).then(api.handleResponse);
+  });
 };
 
 // Sign In
 const login = ({ email, password }) => {
-  return fetch(`${baseUrl}/signin`, {
+  return api.request(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then(api.handleResponse);
+  });
 };
 
 // Check token
 const checkToken = (jwt) => {
-  return fetch(`${baseUrl}/users/me`, {
+  return api.request(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${jwt}`,
     },
-  }).then(api.handleResponse);
+  });
 };
 
 // Edit user profile
 const updateUser = ({ name, avatar }) => {
   const jwt = localStorage.getItem("jwt");
-  return fetch(`${baseUrl}/users/me`, {
+  return api.request(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${jwt}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then(api.handleResponse);
+  });
 };
 
 const auth = {
